@@ -103,7 +103,6 @@ MEDIA QUERIES
 
     .counter h1 {
         font-size: 4rem;
-        width: 10rem;
-        
+        width: fit-content;
     }
 }
