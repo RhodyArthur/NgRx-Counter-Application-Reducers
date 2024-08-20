@@ -96,7 +96,7 @@
 ================
 MEDIA QUERIES
 ================ */
-@media screen and (max-width: 376px) {
+@media screen and (max-width: 468px) {
     .main-container {
         padding: 0.5em;
     }
