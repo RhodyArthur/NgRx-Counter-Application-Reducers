@@ -15,7 +15,7 @@
 
     <!--set counter container -->
     <div class="input-container">
-        <input type="number">
-        <button type="button">Set Counter</button>
+        <input type="number" [(ngModel)]="inputValue">
+        <button type="button" (click)="setCount()">Set Counter</button>
     </div>
 </div>
