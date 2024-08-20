@@ -6,8 +6,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    max-width: 25rem;
-    width: 90%;
+    width: auto;
     height: auto;
     box-shadow: 0 0 5px rgba(0, 0, 0,  0.3);
     border-radius: 8px;
@@ -49,7 +48,7 @@
 
 .counter h1 {
     font-size: 9rem;
-    width: 15rem;
+    width: fit-content;
     text-align: center;
 }
 
@@ -97,9 +96,6 @@
 MEDIA QUERIES
 ================ */
 @media screen and (max-width: 468px) {
-    .main-container {
-        padding: 0.5em;
-    }
 
     .counter h1 {
         font-size: 4rem;
