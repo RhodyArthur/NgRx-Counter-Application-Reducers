@@ -8,3 +8,8 @@ export const reset = createAction('[Counter Component] Reset');
 export const setCount = createAction('[Counter Component] Set Count',
     props<{ count: number }>()
 )
+
+// custom action for increment by value
+export const incrementBy = createAction('[Counter Component] Increment By',
+    props<{value: number}>() //accepts payload
+);
