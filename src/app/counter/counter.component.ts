@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { increment, decrement, reset, setCount } from '../state/counter.actions';
+import { increment, decrement, reset, setCount, incrementBy } from '../state/counter.actions';
 import { CommonModule } from '@angular/common';
 import { selectCounter } from '../state/counter.selectors';
 import { FormsModule } from '@angular/forms';
@@ -17,6 +17,7 @@ export class CounterComponent {
 
  count$: Observable<number>;
  inputValue:number = 0;
+ incrementValue:number = 0;
 
   constructor(private store: Store) {
     this.count$ = this.store.select(selectCounter);
@@ -45,5 +46,10 @@ export class CounterComponent {
       this.store.dispatch(reset());
       this.store.dispatch(setCount({count: this.inputValue}));
     }
+  }
+
+  // dispatch an incrementBy action
+  incrementByValue() {
+    this.store.dispatch(incrementBy({value: this.incrementValue}))
   }
 }
