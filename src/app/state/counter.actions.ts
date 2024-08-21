@@ -13,3 +13,12 @@ export const setCount = createAction('[Counter Component] Set Count',
 export const incrementBy = createAction('[Counter Component] Increment By',
     props<{value: number}>() //accepts payload
 );
+
+
+// union type for all actions
+export type counterActionsUnion = 
+| ReturnType<typeof increment>
+| ReturnType<typeof decrement>
+| ReturnType<typeof reset>
+| ReturnType<typeof setCount>
+| ReturnType<typeof incrementBy>
