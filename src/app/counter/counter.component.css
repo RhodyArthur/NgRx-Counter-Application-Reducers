@@ -110,7 +110,6 @@
     justify-content: space-around;
     gap: 1rem;
     margin-top: 1em;
-    /* max-width: 300px; */
     flex-wrap: wrap;
 }
 
