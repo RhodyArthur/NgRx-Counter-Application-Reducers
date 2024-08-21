@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { decrement, increment, incrementBy, reset, setCount } from "./counter.actions";
+import { decrement, decrementBy, increment, incrementBy, reset, setCount } from "./counter.actions";
 
 export const initialState = () => {
     if (typeof window !== 'undefined' && localStorage.getItem('counter') !== null) {
@@ -13,5 +13,6 @@ export const counterReducer = createReducer(
     on(decrement, (state) => state - 1),
     on(reset, () => 0),
     on(setCount, (_, {count}) => count),
-    on(incrementBy, (state, {value}) => state + value)
+    on(incrementBy, (state, {value}) => state + value),
+    on(decrementBy, (state, {value}) => state - value)
 )
