@@ -53,11 +53,11 @@ export class CounterComponent {
 
   // dispatch an incrementBy action
   incrementByValue() {
-    this.store.dispatch(incrementBy({value: this.incrementValue}));
+    this.store.dispatch(incrementBy({value: this.inputValue}));
   }
 
   // dispatch a decrement by action
   decrementByValue() {
-    this.store.dispatch(decrementBy({value: this.decrementValue}));
+    this.store.dispatch(decrementBy({value: this.inputValue}));
   }
 }

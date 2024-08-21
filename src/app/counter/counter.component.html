@@ -1,4 +1,5 @@
 <div class="main-container">
+    <h1 class="card-title">Counter Application</h1>
     <!-- reset icon -->
     <div class="reset" (click)="reset()" title="Reset Counter">
         <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 30 30" width="30px" height="30px">
@@ -8,20 +9,18 @@
 
     <!-- counter and buttons container -->
     <div class="counter">
-        <button type="button" class="decrement-btn" (click)="decrement()" title="decrement">-</button>
         <h1>{{ count$ | async }}</h1>
-        <button type="button" class="increment-btn" (click)="increment()" title="increment">+</button>
     </div>
-
+    
     <!--set counter container -->
     <div class="input-container">
         <input type="number" [(ngModel)]="inputValue" placeholder="Enter count">
         <button type="button" (click)="setCount()">Set Counter</button>
-
-        <input type="number" [(ngModel)]="incrementValue" placeholder="Enter increment value">
-        <button type="button" (click)="incrementByValue()">Increment By {{incrementValue}}</button>
-
-        <input type="number" [(ngModel)]="decrementValue" placeholder="Enter decrement by value">
-        <button type="button" (click)="decrementByValue()">Decrement By {{decrementValue}}</button>
+    </div>
+    <div class="btn-container">
+        <button type="button" class="decrement-btn" (click)="decrement()" title="decrement">-1</button>
+        <button type="button" class="increment-btn" (click)="increment()" title="increment">+1</button>
+        <button type="button" (click)="incrementByValue()">Increment By {{inputValue}}</button>
+        <button type="button" (click)="decrementByValue()">Decrement By {{inputValue}}</button>
     </div>
 </div>
