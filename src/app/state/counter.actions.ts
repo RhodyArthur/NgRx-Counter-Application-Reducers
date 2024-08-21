@@ -19,6 +19,11 @@ export const decrementBy = createAction('[Counter Component] Decrement By',
     props<{value: number}>()
  );
 
+// custom action for decrement by value
+export const multiplyBy = createAction('[Counter Component] Multiply By',
+    props<{value: number}>()
+ );
+
 
 // union type for all actions
 export type counterActionsUnion = 
@@ -28,3 +33,4 @@ export type counterActionsUnion =
 | ReturnType<typeof setCount>
 | ReturnType<typeof incrementBy>
 | ReturnType<typeof decrementBy>
+| ReturnType<typeof multiplyBy>
