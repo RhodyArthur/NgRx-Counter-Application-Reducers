@@ -1,19 +1,24 @@
 import { createReducer, on } from "@ngrx/store";
-import { decrement, decrementBy, increment, incrementBy, multiplyBy, reset, setCount } from "./counter.actions";
+import { decrement, increment, incrementBy, reset, setCount } from "./counter.actions";
 
-export const initialState = () => {
-    if (typeof window !== 'undefined' && localStorage.getItem('counter') !== null) {
-        return +localStorage.getItem('counter')!;
-    }
-    return 0;
+// defining the state shape
+export interface CounterState {
+    counter: number;
+}
+
+// setting the initial state
+export const initialState: CounterState = {
+    counter: typeof window !== 'undefined' && localStorage.getItem('counter') !== null
+        ? +localStorage.getItem('counter')!
+        : 0
 };
+// creating the reducer function
+// ensuring mutability
 export const counterReducer = createReducer(
-    initialState(),
-    on(increment, (state) => state + 1),
-    on(decrement, (state) => state - 1),
-    on(reset, () => 0),
-    on(setCount, (_, {count}) => count),
-    on(incrementBy, (state, {value}) => state + value),
-    on(decrementBy, (state, {value}) => state - value),
-    on(multiplyBy, (state, {value}) => state * value)
+    initialState,
+    on(increment, (state) => ({...state, counter: state.counter + 1})),
+    on(decrement, (state) => ({...state, counter: state.counter - 1})),
+    on(reset, (state) => ({...state, counter:0})),
+    on(setCount, (state, {count}) => ({...state, counter: count})),
+    on(incrementBy, (state, {value}) => ({...state, counter: state.counter + value}))
 )
