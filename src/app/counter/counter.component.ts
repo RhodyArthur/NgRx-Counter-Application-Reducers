@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { increment, decrement, reset, setCount, incrementBy, decrementBy, multiplyBy } from '../state/counter.actions';
+import { increment, decrement, reset, setCount, incrementBy} from '../state/counter.actions';
 import { CommonModule } from '@angular/common';
 import { selectCounter } from '../state/counter.selectors';
 import { FormsModule } from '@angular/forms';
@@ -51,15 +51,5 @@ export class CounterComponent {
   // dispatch an incrementBy action
   incrementByValue() {
     this.store.dispatch(incrementBy({value: this.inputValue}));
-  }
-
-  // dispatch a decrement by action
-  decrementByValue() {
-    this.store.dispatch(decrementBy({value: this.inputValue}));
-  }
-
-  // dispatch a multiply by action
-  multiplyByValue() {
-    this.store.dispatch(multiplyBy({value: this.inputValue}));
   }
 }

@@ -11,6 +11,7 @@ export const initialCounterState: CounterState = {
     counter: typeof window !== 'undefined' && localStorage.getItem('counter') !== null
         ? +localStorage.getItem('counter')!
         : 0
+    // counter: 0
 };
 
 
