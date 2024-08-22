@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { decrement, increment, incrementBy, reset, setCount } from "./counter.actions";
+import { decrement, increment, incrementBy, reset, setCount, undoLastAction } from "./counter.actions";
 
 // defining the state shape
 export interface CounterState {
@@ -7,18 +7,29 @@ export interface CounterState {
 }
 
 // setting the initial state
-export const initialState: CounterState = {
+export const initialCounterState: CounterState = {
     counter: typeof window !== 'undefined' && localStorage.getItem('counter') !== null
         ? +localStorage.getItem('counter')!
         : 0
 };
+
+
 // creating the reducer function
 // ensuring mutability
 export const counterReducer = createReducer(
-    initialState,
+    initialCounterState,
     on(increment, (state) => ({...state, counter: state.counter + 1})),
-    on(decrement, (state) => ({...state, counter: state.counter - 1})),
+
+    // cannot decrement below zero
+    on(decrement, state => ({ ...state, counter: Math.max(0, state.counter - 1) })),
     on(reset, (state) => ({...state, counter:0})),
+
+    // complex state update with immutability
     on(setCount, (state, {count}) => ({...state, counter: count})),
-    on(incrementBy, (state, {value}) => ({...state, counter: state.counter + value}))
+    on(incrementBy, (state, {value}) => ({...state, counter: state.counter + value})),
+
+    // on(undoLastAction, state => {
+    //     const lastCount = state.counterHistory[state.counterHistory.length - 2] || 0;
+    //     return { ...state, count: lastCount };
+    //   })
 )

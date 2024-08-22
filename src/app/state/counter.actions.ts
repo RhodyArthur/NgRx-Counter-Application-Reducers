@@ -14,6 +14,9 @@ export const incrementBy = createAction('[Counter Component] Increment By',
     props<{value: number}>() //accepts payload
 );
 
+// action for undo last action
+export const undoLastAction = createAction('[Counter Component] Undo Last Action');
+
 
 // union type for all actions
 export type counterActionsUnion = 
@@ -22,3 +25,4 @@ export type counterActionsUnion =
 | ReturnType<typeof reset>
 | ReturnType<typeof setCount>
 | ReturnType<typeof incrementBy>
+|ReturnType<typeof undoLastAction>
